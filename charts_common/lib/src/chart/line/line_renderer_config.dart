@@ -51,6 +51,8 @@ class LineRendererConfig<D> extends LayoutViewConfig
   /// Configures whether points representing the data will be drawn.
   final bool includePoints;
 
+  final bool smoothLine;
+
   /// Configures whether an area skirt representing the data will be drawn.
   ///
   /// An area skirt will be drawn from the line for each series, down to the
@@ -85,6 +87,7 @@ class LineRendererConfig<D> extends LayoutViewConfig
       this.layoutPaintOrder = LayoutViewPaintOrder.line,
       this.areaOpacity = 0.1,
       this.roundEndCaps = false,
+      this.smoothLine = false,
       SymbolRenderer? symbolRenderer})
       : symbolRenderer = symbolRenderer ?? LineSymbolRenderer();
 

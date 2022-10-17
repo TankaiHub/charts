@@ -68,6 +68,7 @@ abstract class ChartCanvas {
       Color? fill,
       Color? stroke,
       bool? roundEndCaps,
+      bool? smoothLine,
       double? strokeWidthPx,
       List<int>? dashPattern});
 
