@@ -39,6 +39,7 @@ class LinePainter {
       Rectangle<num>? clipBounds,
       common.Color? fill,
       common.Color? stroke,
+      bool? smoothLine,
       bool? roundEndCaps,
       double? strokeWidthPx,
       List<int>? dashPattern,
@@ -76,8 +77,9 @@ class LinePainter {
       }
       paint.strokeJoin = StrokeJoin.round;
       paint.style = PaintingStyle.stroke;
-
-      if (dashPattern == null || dashPattern.isEmpty) {
+      if (smoothLine ?? false) {
+        _drawSmoothLine(canvas, paint, points);
+      } else if (dashPattern == null || dashPattern.isEmpty) {
         if (roundEndCaps == true) {
           paint.strokeCap = StrokeCap.round;
         }
