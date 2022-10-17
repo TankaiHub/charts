@@ -17,6 +17,7 @@ import 'dart:ui' as ui show Shader;
 import 'dart:math' show Point, Rectangle;
 import 'package:flutter/material.dart';
 import 'package:charts_common/common.dart' as common show Color;
+import 'package:charts_flutter/src/util/monotonex.dart';
 
 /// Draws a simple line.
 ///
@@ -90,6 +91,14 @@ class LinePainter {
     if (clipBounds != null) {
       canvas.restore();
     }
+  }
+
+  /// Draws smooth lines between each point.
+  void _drawSmoothLine(Canvas canvas, Paint paint, List<Point> points) {
+    final path = new Path()
+      ..moveTo(points.first.x.toDouble(), points.first.y.toDouble());
+    MonotoneX.addCurve(path, points);
+    canvas.drawPath(path, paint);
   }
 
   /// Draws solid lines between each point.
